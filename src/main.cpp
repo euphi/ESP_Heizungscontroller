@@ -16,11 +16,11 @@
 #include <OLEDStatusIndicator.h>
 
 RelaisNode rel;
-OLEDStatusIndicator status;
+//OLEDStatusIndicator status;
 
 
 void eventHandler(HomieEvent event) {
-	status.Event(event);
+//	status.Event(event);
 
 }
 void setup() {
@@ -28,13 +28,13 @@ void setup() {
 	Serial.println("Up!");
 	Serial.flush();
 
-	status.setup();
+//	status.setup();
 	Homie.disableResetTrigger();
 	Homie.onEvent(eventHandler);
 	Homie.setup();
 }
 
 void loop() {
-	status.loop();
+//	status.loop();
 	Homie.loop();
 }
