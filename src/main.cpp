@@ -10,7 +10,6 @@
 #include <Homie.h>
 #include <RelaisNode.h>
 
-
 /* includes for Libraries, so platformio can find them */
 #include <Wire.h>
 #include <Sensors.h>
@@ -32,7 +31,6 @@ void setup() {
 	status.setup();
 	Homie.disableResetTrigger();
 	Homie.onEvent(eventHandler);
-	Homie.enableLogging(true);
 	Homie.setup();
 }
 
