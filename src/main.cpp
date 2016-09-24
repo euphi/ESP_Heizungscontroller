@@ -10,47 +10,25 @@
 #include <Homie.h>
 #include <RelaisNode.h>
 #include <LoggerNode.h>
-#include <InputController.h>
 
 /* includes for Libraries, so platformio can find them */
-#include <Wire.h>
-#include <Sensors.h>
-
-
-#include <OLEDStatusIndicator.h>
+#include <SensorNode.h> // TODO: Quirk to make pio find sensor.h when compiling HomieNodeCollection
 
 RelaisNode rel;
-OLEDStatusIndicator status;
-SSD1306Wire display(0x3c, SDA, SCL);
-OLEDDisplayUi ui(&display);
-InputController ictrl;
 
-void eventHandler(HomieEvent event) {
-	status.Event(event);
-
-}
 void setup() {
 	Serial.begin(115200);
-	Serial.println("Setup");
+	Serial.println("Starting Heizungscontroller");
 	Serial.flush();
+
 	Homie.disableResetTrigger();
-	Homie.setLoggingPrinter(&display);
-	//Homie.setLoggingPrinter(&Serial);
-	display.setLogBuffer(4,200);
 	LN.setLoglevel(LoggerNode::DEBUG);
-
-	ui.setFrameAnimation(SLIDE_LEFT);
-	ui.disableAutoTransition();
-	ui.disableAllIndicators();
-	ui.init();
-
-	display.flipScreenVertically();
-	status.setup();
-	Homie.onEvent(eventHandler);
 	Homie.setup();
+	Serial.begin(115200);
+	Serial.println("Finished Setup");
+	Serial.flush();
 }
 
 void loop() {
-	status.loop();
 	Homie.loop();
 }
