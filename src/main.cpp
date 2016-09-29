@@ -23,6 +23,7 @@ void setup() {
 
 	Homie.disableResetTrigger();
 	LN.setLoglevel(LoggerNode::DEBUG);
+	Homie.setBroadcastHandler([](String level, String value) {LN.logf(__PRETTY_FUNCTION__,LoggerNode::INFO, "Broadcast: %s: %s", level.c_str(), value.c_str());return true;});
 	Homie.setup();
 	Serial.begin(115200);
 	Serial.println("Finished Setup");
