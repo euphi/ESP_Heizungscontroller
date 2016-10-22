@@ -22,7 +22,8 @@ void setup() {
 	Serial.flush();
 
 	Homie.disableResetTrigger();
-	LN.setLoglevel(LoggerNode::DEBUG);
+	LN.setLoglevel(LoggerNode::INFO);
+	Homie_setFirmware("HzngCtrl", "0.9");
 	Homie.setBroadcastHandler([](String level, String value) {LN.logf(__PRETTY_FUNCTION__,LoggerNode::INFO, "Broadcast: %s: %s", level.c_str(), value.c_str());return true;});
 	Homie.setup();
 	Serial.begin(115200);
