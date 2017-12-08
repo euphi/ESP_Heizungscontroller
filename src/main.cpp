@@ -12,10 +12,10 @@
 #include <LoggerNode.h>
 
 /* includes for Libraries, so platformio can find them */
-#include <SensorNode.h> // TODO: Quirk to make pio find sensor.h when compiling HomieNodeCollection
+#include <SensorNode.h> // TODO: make pio find sensor.h when compiling HomieNodeCollection
 #include <Automaton.h>
 
-RelaisNode rel;
+RelaisNode rel(0x0000, 0x0FFF, 0xF000);
 
 void setup() {
 	delay(200);
@@ -24,7 +24,7 @@ void setup() {
 	Homie.setLedPin(16, false);
 	Homie.disableResetTrigger();
 	LN.setLoglevel(LoggerNode::INFO);
-	Homie_setFirmware("HzngCtrl", "1.0");
+	Homie_setFirmware("HzngCtrl", "1.1.5");
 	//Homie.setBroadcastHandler([](String level, String value) {LN.logf(__PRETTY_FUNCTION__,LoggerNode::INFO, "Broadcast: %s: %s", level.c_str(), value.c_str());return true;});
 	Homie.setup();
 }
