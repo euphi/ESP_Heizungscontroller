@@ -13,7 +13,6 @@
 
 /* includes for Libraries, so platformio can find them */
 #include <SensorNode.h> // TODO: make pio find sensor.h when compiling HomieNodeCollection
-#include <Automaton.h>
 
 RelaisNode rel(0x0000, 0x0FFF, 0xF000);
 
