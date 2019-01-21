@@ -1,4 +1,5 @@
 .pioenvs
 /.piolibdeps/
 /lib/
-.piolibdeps
+/.vscode/
+/.settings/
